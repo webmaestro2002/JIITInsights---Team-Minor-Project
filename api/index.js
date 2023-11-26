@@ -1,19 +1,19 @@
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-const User = require("./models/User");
-const Hosted = require("./models/Hosted");
-const Participated = require("./models/Participated");
-const Reminder = require("./models/Reminder");
-const bcrypt = require("bcryptjs");
-const jwt = require('jsonwebtoken');
-const cookieParser = require('cookie-parser');
-const imageDownloader = require('image-downloader');
-const multer = require('multer');
-const fs = require('fs');
-const nodemailer = require('nodemailer');
-const crypto = require('crypto');
-const path = require('path');
+// const express = require("express");
+// const cors = require("cors");
+// const mongoose = require("mongoose");
+// const User = require("./models/User");
+// const Hosted = require("./models/Hosted");
+// const Participated = require("./models/Participated");
+// const Reminder = require("./models/Reminder");
+// const bcrypt = require("bcryptjs");
+// const jwt = require('jsonwebtoken');
+// const cookieParser = require('cookie-parser');
+// const imageDownloader = require('image-downloader');
+// const multer = require('multer');
+// const fs = require('fs');
+// const nodemailer = require('nodemailer');
+// const crypto = require('crypto');
+// const path = require('path');
 
 
 
