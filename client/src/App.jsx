@@ -22,6 +22,7 @@ import MerchandiseApp from './MerchandiseApp.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 
 
+
 axios.defaults.baseURL = 'http://localhost:4000';
 axios.defaults.withCredentials = true;
 
@@ -46,8 +47,8 @@ function App() {
           <Route path="/admin/list" element={<ListAdmins />} />
           <Route path="/admin/add" element={<AddAdmin />} />
           <Route path="/admin/login" element={<LoginAdmin />} />
-          <Route path="/merchandise/*" element={<MerchandiseApp />} />
-          <Route path="/contact" element={<ContactPage />} />
+          {/* <Route path="/merchandise/*" element={<MerchandiseApp />} />
+          <Route path="/contact" element={<ContactPage />} /> */}
         </Route>
       </Routes>
     </UserContextProvider>
