@@ -713,10 +713,4 @@ app.post("/admin/add", addAdmins);
 
 // app.post('/admin/login', adminController.loginAdmin)
 
-
 app.listen(4000);
-
-
-
-
-
