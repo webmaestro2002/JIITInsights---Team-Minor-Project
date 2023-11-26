@@ -47,8 +47,8 @@ function App() {
           <Route path="/admin/list" element={<ListAdmins />} />
           <Route path="/admin/add" element={<AddAdmin />} />
           <Route path="/admin/login" element={<LoginAdmin />} />
-          {/* <Route path="/merchandise/*" element={<MerchandiseApp />} />
-          <Route path="/contact" element={<ContactPage />} /> */}
+          <Route path="/merchandise/*" element={<MerchandiseApp />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Route>
       </Routes>
     </UserContextProvider>
