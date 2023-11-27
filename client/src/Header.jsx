@@ -5,23 +5,20 @@ import { useContext } from "react";
 export default function Header() {
     const { user } = useContext(UserContext);
     return (
-        <div>
-            <header className='flex justify-between  bg-black'>
+        <div className="">
+            <header className='flex justify-between bg-black'>
                 {/* logo */}
                 <div className='flex items-center gap-1'>
-                    <img src="/images/logo.png" class="w-24 h-auto" alt="" />
+                    <img src="/images/logo.png" className="w-24 h-auto" alt="" />
                 </div>
-                {/* navbar */}
-                <div className='flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-300 bg-black'>
-                    <Link to="/" className="flex items-center text-white">Home</Link>
-                    <div className="border-l border-gray-300"></div>
-                    <Link to="/merchandise" className="flex items-center text-white">Merchandise</Link>
-                    <div className="border-l border-gray-300"></div>
-                    <Link to="/contact" className="flex items-center text-white">Contact</Link>
-                </div>
-
                 {/* user widget */}
-                <Link to={user ? '/account' : '/login'} className='flex items-center gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-300 text-white'>
+                <Link to={user ? '/account' : '/login'} className='flex items-center gap-2 py-2 px-4  text-white text-sm focus:outline-none'>
+                    {/* navbar */}
+                    <div className='flex gap-4 py-2 px-4 bg-black'>
+                        <Link to="/" className="flex items-center text-white text-sm font-normal focus:outline-none">Home</Link>
+                        <Link to="/merchandise" className="flex items-center text-white text-sm font-normal focus:outline-none">Merchandise</Link>
+                        <Link to="/contact" className="flex items-center text-white text-sm font-normal focus:outline-none rounded-full" style={{ backgroundColor: '#800080', width: '80px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Contact</Link>
+                    </div>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
@@ -31,12 +28,13 @@ export default function Header() {
                         </svg>
                     </div>
                     {!!user && (
-                        <div className="text-white">
+                        <div className="text-white text-base ">
                             {user.name}
                         </div>
                     )}
                 </Link>
             </header>
+
         </div>
     )
 }
