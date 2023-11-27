@@ -161,6 +161,65 @@ app.post("/forgot-password", async (req, res) => {
 });
 
 
+// app.get('/reset-password/:token', async (req, res) => {
+//     const { token } = req.params;
+
+//     try {
+//         const user = await User.findOne({
+//             resetPasswordToken: token,
+//             resetPasswordExpires: { $gt: Date.now() },
+//         });
+
+//         if (!user) {
+//             return res.status(400).json({ error: 'Invalid or expired reset token' });
+//         }
+
+//         // If the user is valid, you might want to redirect or render the reset page on the client side
+//         // Here, I'm sending a JSON response with a success message
+//         res.json({ success: true, message: 'Valid reset token' });
+//     } catch (error) {
+//         console.error('Error handling reset password request:', error);
+//         res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// });
+
+
+
+// app.post('/api/reset-password/:token', async (req, res) => {
+//     const { token } = req.params;
+//     const { newPassword, email } = req.body; // Include email in the request body
+
+//     try {
+//         const user = await User.findOne({
+//             resetPasswordToken: token,
+//             resetPasswordExpires: { $gt: Date.now() },
+//             email: email, // Check for both token and email
+//         });
+
+//         if (!user) {
+//             return res.status(400).json({ error: 'Invalid or expired reset token or email' });
+//         }
+
+//         // Update the user's or admin's password based on the role
+//         if (user.role === 'admin') {
+//             user.adminPassword = bcrypt.hashSync(newPassword, bcrypt.genSaltSync(10));
+//         } else {
+//             user.password = bcrypt.hashSync(newPassword, bcrypt.genSaltSync(10));
+//         }
+
+//         user.resetPasswordToken = undefined;
+//         user.resetPasswordExpires = undefined;
+
+//         await user.save();
+
+//         // Send a success response
+//         res.json({ success: true, message: 'Password reset successful' });
+//     } catch (error) {
+//         console.error('Error resetting password:', error);
+//         res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// });
+
 app.get('/reset-password/:token', async (req, res) => {
     const { token } = req.params;
 
@@ -174,30 +233,38 @@ app.get('/reset-password/:token', async (req, res) => {
             return res.status(400).json({ error: 'Invalid or expired reset token' });
         }
 
-        // Render your password reset page (you will create this on the client side)
-        res.sendFile(path.resolve(__dirname, 'path-to-your-reset-page/index.html'));
+        // If the user is valid, you might want to redirect or render the reset page on the client side
+        // Here, I'm sending a JSON response with a success message
+        res.json({ success: true, message: 'Valid reset token' });
     } catch (error) {
         console.error('Error handling reset password request:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
 
+// Uncomment the following if needed for handling the reset-password POST request
 app.post('/api/reset-password/:token', async (req, res) => {
     const { token } = req.params;
-    const { newPassword } = req.body;
+    const { newPassword, email } = req.body; // Include email in the request body
 
     try {
         const user = await User.findOne({
             resetPasswordToken: token,
             resetPasswordExpires: { $gt: Date.now() },
+            email: email, // Check for both token and email
         });
 
         if (!user) {
-            return res.status(400).json({ error: 'Invalid or expired reset token' });
+            return res.status(400).json({ error: 'Invalid or expired reset token or email' });
         }
 
-        // Update the user's password and clear the reset token fields
-        user.password = bcrypt.hashSync(newPassword, bcrypt.genSaltSync(10));
+        // Update the user's or admin's password based on the role
+        if (user.role === 'admin') {
+            user.adminPassword = bcrypt.hashSync(newPassword, bcrypt.genSaltSync(10));
+        } else {
+            user.password = bcrypt.hashSync(newPassword, bcrypt.genSaltSync(10));
+        }
+
         user.resetPasswordToken = undefined;
         user.resetPasswordExpires = undefined;
 
@@ -207,6 +274,35 @@ app.post('/api/reset-password/:token', async (req, res) => {
         res.json({ success: true, message: 'Password reset successful' });
     } catch (error) {
         console.error('Error resetting password:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+// Endpoint to update password in the database
+app.post('/api/update-password', async (req, res) => {
+    const { email, newPassword } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Update the user's or admin's password based on the role
+        if (user.role === 'admin') {
+            user.adminPassword = bcrypt.hashSync(newPassword, bcrypt.genSaltSync(10));
+        } else {
+            user.password = bcrypt.hashSync(newPassword, bcrypt.genSaltSync(10));
+        }
+
+        await user.save();
+
+        // Send a success response
+        res.json({ success: true, message: 'Password updated successfully' });
+    } catch (error) {
+        console.error('Error updating password:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
@@ -525,6 +621,74 @@ app.post('/admin/add', async (req, res) => {
     }
 });
 
+
+// const authenticateAdminMiddleware = async (req, res, next) => {
+//     const { userName, adminPassword } = req.body;
+
+//     try {
+//         const adminUser = await User.findOne({ userName: userName, role: 'admin' });
+
+//         if (adminUser) {
+//             const passwordMatch = bcrypt.compareSync(adminPassword, adminUser.adminPassword);
+
+//             if (passwordMatch) {
+//                 // If authentication is successful, attach the admin user to the request object
+//                 req.adminUser = adminUser;
+//                 next();
+//             } else {
+//                 console.log('Admin Password incorrect.');
+//                 return res.status(401).json({
+//                     code: 401,
+//                     message: 'Username or Admin Password wrong.'
+//                 });
+//             }
+//         } else {
+//             console.log('Admin not found.');
+//             return res.status(404).json({
+//                 code: 404,
+//                 message: 'Admin not found'
+//             });
+//         }
+//     } catch (error) {
+//         console.error('Error in admin authentication:', error);
+//         return res.status(500).json({
+//             code: 500,
+//             message: 'Internal Server Error'
+//         });
+//     }
+// };
+
+// // Use the middleware in the route handlers
+// app.post('/admin/add', authenticateAdminMiddleware, async (req, res) => {
+//     // Only authenticated admin can access this route
+//     try {
+//         // Access admin user information using req.adminUser
+//         const { userName, adminPassword, email, role } = req.body;
+
+//         // Check if the role is 'admin'
+//         if (role === 'admin') {
+//             // Create a new admin instance with the necessary fields
+//             const newAdmin = new User({ userName, email, role });
+
+//             // Hash the adminPassword before storing it in the database
+//             newAdmin.adminPassword = bcrypt.hashSync(adminPassword, bcryptSalt);
+
+//             // Save the new admin to the database
+//             await newAdmin.save();
+
+//             // Respond with success
+//             res.json({ success: true });
+//         } else {
+//             // If the role is not 'admin', return an error
+//             res.status(400).json({ success: false, message: 'Invalid role for admin' });
+//         }
+//     } catch (error) {
+//         console.error('Error saving admin to the database:', error);
+//         res.status(500).json({ success: false, message: 'Internal server error' });
+//     }
+// });
+
+// app.get('/admin/admins', authenticateAdminMiddleware, getAdmins);
 
 
 // Login route for admin users

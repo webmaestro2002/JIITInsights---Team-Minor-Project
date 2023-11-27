@@ -76,14 +76,14 @@ export default function RegisterPage() {
                     />
                     <input
                         type="email"
-                        placeholder="your@email.com"
+                        placeholder="College email id"
                         value={email}
                         onChange={(ev) => setEmail(ev.target.value)}
                     />
                     {emailError && <p className="text-red-500">{emailError}</p>}
                     <input
                         type="password"
-                        placeholder="password"
+                        placeholder="Password (min length 8)"
                         value={password}
                         onChange={(ev) => setPassword(ev.target.value)}
                     />

@@ -1,9 +1,15 @@
+<<<<<<< HEAD
+=======
+
+import React, { useContext } from "react";
+>>>>>>> 1aabf5eb230d07c5d15c89d5f2341e4d92362738
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import { useContext } from "react";
 
 export default function Header() {
     const { user, isAdmin } = useContext(UserContext);
+<<<<<<< HEAD
 
     return (
         <div>
@@ -11,6 +17,27 @@ export default function Header() {
                 {/* logo */}
                 <div className="flex items-center gap-1">
                     <img src="/images/logo.png" className="w-24 h-auto" alt="" />
+=======
+    console.log("user", user);
+    console.log("isAdmin", isAdmin);
+
+    return (
+        <div>
+            <header className='flex justify-between'>
+                <Link to={'/'} className='flex items-center gap-1'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                    </svg>
+                    <span className='font-bold text-xl'>jiitInsights</span>
+                </Link>
+
+                <div className='flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-300 bg-black'>
+                    <Link to="/" className="flex items-center text-white">Home</Link>
+                    <div className="border-l border-gray-300"></div>
+                    <Link to="/merchandise" className="flex items-center text-white">Merchandise</Link>
+                    <div className="border-l border-gray-300"></div>
+                    <Link to="/contact" className="flex items-center text-white">Contact</Link>
+>>>>>>> 1aabf5eb230d07c5d15c89d5f2341e4d92362738
                 </div>
                 {/* user widget */}
                 <Link
@@ -93,6 +120,9 @@ export default function Header() {
                         </div>
                     ) : null}
                 </Link>
+
+                {/* Conditionally render the "Add Admin" link */}
+             
             </header>
         </div>
     );

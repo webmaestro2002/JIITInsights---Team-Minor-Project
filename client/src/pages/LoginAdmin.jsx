@@ -56,7 +56,7 @@ const LoginAdmin = () => {
                 <input
                     value={adminPassword}
                     onChange={(e) => setAdminPassword(e.target.value)}
-                    placeholder="Password"
+                    placeholder="Password (min length 8)"
                     className={`input-admin mb-4 ${passwordError ? 'border-red-500' : ''}`}
                     type="password"
                 />
