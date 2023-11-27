@@ -1,25 +1,13 @@
-<<<<<<< HEAD
-=======
+
 
 import React, { useContext } from "react";
->>>>>>> 1aabf5eb230d07c5d15c89d5f2341e4d92362738
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import { useContext } from "react";
 
 export default function Header() {
     const { user, isAdmin } = useContext(UserContext);
-<<<<<<< HEAD
 
-    return (
-        <div>
-            <header className="flex justify-between bg-black">
-                {/* logo */}
-                <div className="flex items-center gap-1">
-                    <img src="/images/logo.png" className="w-24 h-auto" alt="" />
-=======
-    console.log("user", user);
-    console.log("isAdmin", isAdmin);
 
     return (
         <div>
@@ -37,7 +25,6 @@ export default function Header() {
                     <Link to="/merchandise" className="flex items-center text-white">Merchandise</Link>
                     <div className="border-l border-gray-300"></div>
                     <Link to="/contact" className="flex items-center text-white">Contact</Link>
->>>>>>> 1aabf5eb230d07c5d15c89d5f2341e4d92362738
                 </div>
                 {/* user widget */}
                 <Link
@@ -120,8 +107,6 @@ export default function Header() {
                         </div>
                     ) : null}
                 </Link>
-
-                {/* Conditionally render the "Add Admin" link */}
              
             </header>
         </div>
