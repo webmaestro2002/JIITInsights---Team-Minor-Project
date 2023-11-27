@@ -71,7 +71,17 @@ const Carousel = () => {
                             <div className="name">{slide.name}</div>
                             <div className="des">{slide.description}</div>
                             <Link to={`/society/${encodeURIComponent(slide.name)}`}>
-                                <button>Know more</button>
+                                <button style={{
+                                    backgroundColor: '#2c3e50', // Dark background color
+                                    color: '#ecf0f1',           // Light text color
+                                    padding: '10px 20px',       // Adjust padding as needed
+                                    border: 'none',             // Remove border
+                                    borderRadius: '5px',        // Add border-radius for rounded corners
+                                    cursor: 'pointer',          // Add pointer cursor on hover
+                                }}>
+                                    Know more
+                                </button>
+
                             </Link>
                         </div>
                     </div>

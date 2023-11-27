@@ -3,6 +3,7 @@
 import React, { useContext } from 'react';
 import { ShopContext } from './shopcontext';
 import { PRODUCTS, PRODUCTS1 } from './products';
+import '../App.css';
 
 const ProductDetails = () => {
   const { selectedProduct, closeProductDetails, addToCart, cartItems, removeToCart, updateCartItemCount } = useContext(ShopContext);

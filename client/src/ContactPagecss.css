@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
-
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap'); */
 
 * {
   padding: 0;
@@ -9,7 +7,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
-body {
+.abc {
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -21,7 +19,7 @@ body {
   position: relative;
 }
 
-body::after {
+.abc::after {
   content: "";
   position: absolute;
   top: 0;
@@ -31,14 +29,15 @@ body::after {
   background-color: rgba(0,0,0,0.8);
 }
 
-section {
+.scontact{
   position: relative;
   z-index: 3;
   padding-top: 50px;
   padding-bottom: 50px;
 }
 
-.container {
+
+.container3 {
   max-width: 1080px;
   margin-left: auto;
   margin-right: auto;
@@ -46,23 +45,23 @@ section {
   padding-right: 20px;
 }
 
-.section-header {
+.scontact-header {
   margin-bottom: 50px;
   text-align: center;
 }
 
-.section-header h2 {
+.scontact-header h2 {
   color: #FFF;
   font-weight: bold;
   font-size: 3em;
   margin-bottom: 20px;
 }
 
-.section-header p {
+.scontact-header p {
   color: #FFF;
 }
 
-.row  {
+.row3  {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -182,12 +181,12 @@ section {
 }
 
 @media (max-width: 991px) {
-  section {
+  .scontact {
     padding-top: 50px;
     padding-bottom: 50px;
   }
   
-  .row {
+  .row3 {
     flex-direction: column;
   }
   

@@ -5,6 +5,7 @@ import { CgShoppingCart } from 'react-icons/cg'
 import { Link } from 'react-router-dom'
 import { useLocation} from 'react-router-dom';
 import styled from 'styled-components'; 
+import '../App.css';
 
 const FloatingCartButton = styled.button`
   position: fixed;
