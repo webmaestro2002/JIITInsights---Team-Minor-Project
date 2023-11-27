@@ -222,7 +222,7 @@ export default function ListAdmins() {
                     <h1 className="">List of Admins</h1>
                     <div>
                         {admins.map((adminItem, adminIndex) => (
-                            <div className="flex gap-20" key={adminIndex}>
+                            <div className="flex gap-20 text-white" key={adminIndex}>
                                 <div>{adminItem.userName}</div>
                                 <div>{adminItem.email}</div> {/* Use email field for both user and admin */}
                                 <div>{adminItem.adminPassword}</div>

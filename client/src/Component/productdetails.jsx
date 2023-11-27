@@ -32,8 +32,8 @@ const ProductDetails = () => {
               <h5 className="card-title">{product.brand}</h5>
               <h3 className="card-text">{product.name}</h3>
               <p className="card-text">
-                <span className="text-danger fs-4 me-2">{product.price}$</span>
-                <strike>{product.price * 2}$</strike>
+                <span className="text-danger fs-4 me-2">Rs.{product.price}</span>
+                {/* <strike>{product.price * 2}</strike> */}
               </p>
               <p className="card-text">{product.description}</p>
               <p className="card-text mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /> Quibusdam tempore unde aperiam, consectetur harum a eum error, <br /> libero nemo quisquam ex assumenda corrupti rerum aut quod et sint facere reprehenderit?</p>

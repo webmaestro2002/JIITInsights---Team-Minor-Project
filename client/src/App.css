@@ -49,9 +49,9 @@ font-weight: 500;
 text-decoration: inherit;
 transition: 0.5s ease;
 }
-a:hover {
-color: #800080;
-}
+/* a:hover {
+color: #535bf2;
+} */
 
 
 p{
@@ -1128,6 +1128,8 @@ padding: 24px 1rem !important;
 
 
 
+
+
 /* footer */
 
 
@@ -1147,14 +1149,14 @@ padding: 24px 1rem !important;
 ul{
 	list-style: none;
 }
-.footer{
+/* .footer{
 	background: #0b0f17;
     padding: 70px 0;
 }
 .footer-col{
    width: 25%;
    padding: 0 15px;
-}
+} */
 .logo{
 	color: #ffffff;
 	text-decoration: none;
@@ -1163,7 +1165,7 @@ ul{
 	display: block;
 	transition: all 0.3s ease;
  }
-.footer-col h4{
+/* .footer-col h4{
 	font-size: 18px;
 	color: #ffffff;
 	text-transform: capitalize;
@@ -1180,8 +1182,8 @@ ul{
 	height: 2px;
 	box-sizing: border-box;
 	width: 50px;
-}
-.footer-col ul li:not(:last-child){
+} */
+/* .footer-col ul li:not(:last-child){
 	margin-bottom: 10px;
 }
 .footer-col ul li a{
@@ -1193,12 +1195,12 @@ ul{
 	color: #bbbbbb;
 	display: block;
 	transition: all 0.3s ease;
-}
-.footer-col ul li a:hover{
+} */
+/* .footer-col ul li a:hover{
 	color: #ffffff;
 	padding-left: 8px;
-}
-.footer-col .social-links a{
+} */
+/* .footer-col .social-links a{
 	display: inline-block;
 	height: 40px;
 	width: 40px;
@@ -1209,16 +1211,16 @@ ul{
 	border-radius: 50%;
 	color: #ffffff;
 	transition: all 0.5s ease;
-}
-.footer-col .social-links a:hover{
+} */
+/* .footer-col .social-links a:hover{
 	color: #24262b;
 	background-color: #ffffff;
-}
+} */
 /* Add these styles for the horizontal line and copyright section */
-.footer-line {
+/* .footer-line {
     border-top: 1px solid #ffffff;
     margin: 20px 0;
-}
+} */
 
 .copyright {
     font-size: 14px;
@@ -1231,7 +1233,7 @@ ul{
 /* Rest of your existing CSS */
 
 /*responsive*/
-@media(max-width: 767px){
+/* @media(max-width: 767px){
   .footer-col{
     width: 50%;
     margin-bottom: 30px;
@@ -1241,4 +1243,4 @@ ul{
   .footer-col{
     width: 100%;
 }
-}
+} */
