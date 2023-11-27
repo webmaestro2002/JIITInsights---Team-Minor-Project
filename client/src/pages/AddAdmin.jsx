@@ -49,14 +49,14 @@ const AddAdmin = () => {
                 />
                 <input
                     type="email"
-                    placeholder="admin.email@example.com"
+                    placeholder="College email id"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="mb-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
                 <input
                     type="password"
-                    placeholder="admin password"
+                    placeholder="Password (Min length 8)"
                     value={adminPassword}
                     onChange={(e) => setAdminPassword(e.target.value)}
                     className="mb-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -72,12 +72,16 @@ const AddAdmin = () => {
 export default AddAdmin;
 
 
-// import React, { useState, useEffect } from 'react';
+// Import necessary libraries and components
+
+
+// import React, { useState } from 'react';
 // import axios from 'axios';
 // import { useNavigate } from 'react-router-dom';
 
 // const AddAdmin = () => {
 //     const navigate = useNavigate();
+//     const [password, setPassword] = useState('');
 //     const [userName, setUserName] = useState('');
 //     const [email, setEmail] = useState('');
 //     const [adminPassword, setAdminPassword] = useState('');
@@ -85,68 +89,29 @@ export default AddAdmin;
 //     const [userNameError, setUserNameError] = useState('');
 //     const [passwordError, setPasswordError] = useState('');
 
-//     useEffect(() => {
-//         // Reset errors when inputs change
-//         setEmailError('');
-//         setUserNameError('');
-//         setPasswordError('');
-//     }, [email, userName, adminPassword]);
+//     const handlePasswordSubmit = async (e) => {
+//         e.preventDefault();
 
-//     const validateEmail = (email) => {
-//         const emailRegex = /^\S+@\S+\.\S+$/;
-//         return emailRegex.test(email);
-//     };
-
-//     const validatePassword = (password) => {
-//         return password.length >= 8;
+//         // Check the password (replace 'adminpassword' with your actual password)
+//         if (password === 'disha123') {
+//             // Proceed to show the form
+//             setUserName('');
+//             setEmail('');
+//             setAdminPassword('');
+//         } else {
+//             alert('Incorrect password. Access denied.');
+//         }
 //     };
 
 //     const handleSubmit = async (e) => {
 //         e.preventDefault();
 
-//         // Validate email
-//         if (!email.trim() || !validateEmail(email)) {
-//             setEmailError('Invalid email format');
+//         // If password is incorrect, do not proceed
+//         if (!userName.trim() || !email.trim() || !adminPassword.trim()) {
+//             alert('Please provide a username, email, and admin password.');
 //             return;
 //         }
 
-//         // Validate username
-//         if (!userName.trim()) {
-//             setUserNameError('Username is required');
-//             return;
-//         }
-
-//         // Validate password
-//         if (!adminPassword.trim() || !validatePassword(adminPassword)) {
-//             setPasswordError('Password must be at least 8 characters long');
-//             return;
-//         }
-
-//         // Check if email and username are already registered
-//         try {
-//             const emailResponse = await axios.get(`http://localhost:4000/check-email/${email}`);
-//             const userNameResponse = await axios.get(`http://localhost:4000/check-username/${userName}`);
-
-//             if (emailResponse.data.exists) {
-//                 setEmailError('Email is already registered');
-//                 return;
-//             } else {
-//                 setEmailError('');
-//             }
-
-//             if (userNameResponse.data.exists) {
-//                 setUserNameError('Username is already taken');
-//                 return;
-//             } else {
-//                 setUserNameError('');
-//             }
-//         } catch (error) {
-//             console.error('Error checking email and username:', error);
-//             alert('Error checking email and username. Please check the console for details.');
-//             return;
-//         }
-
-//         // If all validations pass, proceed with adding the admin
 //         try {
 //             const response = await axios.post('http://localhost:4000/admin/add', {
 //                 userName: userName,
@@ -168,38 +133,48 @@ export default AddAdmin;
 //     return (
 //         <div className="max-w-md mx-auto">
 //             <h1>Add Admin</h1>
-//             <form onSubmit={handleSubmit}>
-//                 <input
-//                     type="text"
-//                     placeholder="john doe"
-//                     value={userName}
-//                     onChange={(e) => setUserName(e.target.value)}
-//                     className="mb-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-//                 />
-//                 {userNameError && <p className="text-red-500">{userNameError}</p>}
-
-//                 <input
-//                     type="email"
-//                     placeholder="admin.email@example.com"
-//                     value={email}
-//                     onChange={(e) => setEmail(e.target.value)}
-//                     className="mb-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-//                 />
-//                 {emailError && <p className="text-red-500">{emailError}</p>}
-
+//             <form onSubmit={handlePasswordSubmit}>
 //                 <input
 //                     type="password"
-//                     placeholder="admin password"
-//                     value={adminPassword}
-//                     onChange={(e) => setAdminPassword(e.target.value)}
+//                     placeholder="Enter admin password"
+//                     value={password}
+//                     onChange={(e) => setPassword(e.target.value)}
 //                     className="mb-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 //                 />
-//                 {passwordError && <p className="text-red-500">{passwordError}</p>}
-
 //                 <button type="submit" className="primary">
-//                     Add Admin
+//                     Submit
 //                 </button>
 //             </form>
+
+//             {/* Display the admin creation form if password is correct */}
+//             {password && (
+//                 <form onSubmit={handleSubmit}>
+//                     <input
+//                         type="text"
+//                         placeholder="john doe"
+//                         value={userName}
+//                         onChange={(e) => setUserName(e.target.value)}
+//                         className="mb-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+//                     />
+//                     <input
+//                         type="email"
+//                         placeholder="admin.email@example.com"
+//                         value={email}
+//                         onChange={(e) => setEmail(e.target.value)}
+//                         className="mb-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+//                     />
+//                     <input
+//                         type="password"
+//                         placeholder="admin password"
+//                         value={adminPassword}
+//                         onChange={(e) => setAdminPassword(e.target.value)}
+//                         className="mb-4 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+//                     />
+//                     <button type="submit" className="primary">
+//                         Add Admin
+//                     </button>
+//                 </form>
+//             )}
 //         </div>
 //     );
 // };

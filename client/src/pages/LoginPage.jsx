@@ -71,7 +71,7 @@
 //         <form className="max-w-md mx-auto" onSubmit={handleLoginSubmit}>
 //           <input
 //             type="email"
-//             placeholder="your@email.com"
+//             placeholder="Gsuite id"
 //             value={email}
 //             onChange={(ev) => setEmail(ev.target.value)}
 //           />
@@ -93,9 +93,8 @@
 //           {passwordError && <p className="text-red-500">{passwordError}</p>}
 //           <button className="primary">Login</button>
 //           <div className="text-center py-2 text-gray-500">
-//             Don't have an account yet?{" "}
-//             <Link className="underline text-black" to={"/register"}>
-//               Register Now
+//             <Link className="underline text-black" to={"/forgot-password"}>
+//               Forgot Password?
 //             </Link>
 //           </div>
 //           <div className="text-center py-2 text-gray-500">
@@ -111,7 +110,6 @@
 // }
 
 
-// LoginPage.js
 import React, { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
@@ -184,7 +182,7 @@ export default function LoginPage() {
         <form className="max-w-md mx-auto" onSubmit={handleLoginSubmit}>
           <input
             type="email"
-            placeholder="your@email.com"
+            placeholder="College email id"
             value={email}
             onChange={(ev) => setEmail(ev.target.value)}
           />
@@ -192,7 +190,7 @@ export default function LoginPage() {
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
-              placeholder="password min length should be 8"
+              placeholder="password (min length 8)"
               value={password}
               onChange={(ev) => setPassword(ev.target.value)}
             />
@@ -214,6 +212,14 @@ export default function LoginPage() {
             <p>Admin login:</p>
             <Link className="underline text-black" to={"/admin/login"}>
               Login as Admin
+            </Link>
+          </div>
+
+          {/* Registration Link */}
+          <div className="text-center py-2 text-gray-500">
+            <p>Don't have an account?</p>
+            <Link className="underline text-black" to={"/register"}>
+              Register here
             </Link>
           </div>
         </form>

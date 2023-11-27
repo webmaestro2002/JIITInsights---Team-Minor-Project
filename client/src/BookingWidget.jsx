@@ -35,13 +35,6 @@ export default function BookingWidget({ host }) {
     }
   }, [user]);
 
-  //MY OWN CODE
-  // useEffect(() => {
-  //   if (user) {
-  //     setName(user.name);
-  //   }
-  // }, [user]);
-
   async function participateinevent() {
     console.log('host:', host);
     console.log('host._id:', host._id);
@@ -73,68 +66,51 @@ export default function BookingWidget({ host }) {
     borderRadius: "5px", // Round the corners
   };
 
+// ... (Previous code remains unchanged)
 
-
-  return (
-    <>
-      <div className="bg-white shadow p-4 rounded-2xl">
-        <div className="text-2xl text-center">Vamunique</div>
-        <div className="border rounded-2xl mt-4">
-          <div className="py-3 px-4">
-            <label>Your name</label>
-            <input
-              type="text"
-              value={name}
-              placeholder="John Doe"
-              onChange={(ev) => setName(ev.target.value)}
-            />
-          </div>
-          <div className="py-3 px-4 border-t">
-            <label>Your WhatsApp no.</label>
-            <input
-              type="number"
-              value={whatsappNo}
-              placeholder="99999....."
-              onChange={(ev) => setwhatsappNo(ev.target.value)}
-            />
-          </div>
+return (
+  <>
+    <div className="bg-white shadow p-4 rounded-2xl">
+      <div className="text-2xl text-center">Vamunique</div>
+      <div className="border rounded-2xl mt-4">
+        <div className="py-3 px-4">
+          <label>Your name</label>
+          <input
+            type="text"
+            value={name}
+            placeholder="John Doe"
+            onChange={(ev) => setName(ev.target.value)}
+          />
         </div>
-        <button onClick={participateinevent} className="primary mt-4">
-          Participate
-        </button>
-      </div>
-
-      <div className="bg-white shadow p-4 rounded-2xl">
-        <div className="text-2xl text-center">Remind Me</div>
-        <div className="border rounded-2xl mt-4">
-          <div className="py-3 px-4">
-            <label>Reminder event</label>
-            <input
-              type="text"
-              value={reminderMsg}
-              placeholder="Reminder notes here"
-              onChange={(e) => setReminderMsg(e.target.value)}
-            />
-
-            <DateTimePicker
-              disabled={false}
-              readOnly={false}
-              value={remindAt}
-              onChange={setRemindAt}
-              minDate={new Date()}
-              style={dateTimePickerStyles} // Apply the inline styles here
-            // minutePlaceholder="mm"
-            // hourPlaceholder="hh"
-            // dayPlaceholder="DD"
-            // monthPlaceholder="MM"
-            // yearPlaceholder="YYYY"
-            />
-          </div>
+        <div className="py-3 px-4 border-t">
+          <label>Your WhatsApp no.</label>
+          <input
+            type="number"
+            value={whatsappNo}
+            placeholder="Whatsapp Number"
+            onChange={(ev) => {
+              const input = ev.target.value;
+              // Check if the input is a valid number and has 10 digits
+              if (/^\d{10}$/.test(input)) {
+                setwhatsappNo(input);
+              }
+            }}
+          />
         </div>
-        <button onClick={addReminder} className="primary mt-4">
-          Add Reminder
-        </button>
       </div>
-    </>
-  );
+      <button onClick={participateinevent} className="primary mt-4">
+        Participate
+      </button>
+    </div>
+
+    {/* Notification Card */}
+    <div className="bg-white shadow p-4 rounded-2xl mt-4">
+      <div className="text-2xl text-center">Notification</div>
+      <div className="py-3 px-4">
+        <p>To receive notifications, save +14155238886 as a contact on WhatsApp and send a message with the text "join kind-when" to it.</p>
+      </div>
+    </div>
+  </>
+);
+
 }
