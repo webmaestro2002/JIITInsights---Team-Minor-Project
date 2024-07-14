@@ -18,3 +18,24 @@ button.primary{
     background-color: #02006C;
     @apply bg-primary p-2 w-full text-white rounded-2xl;
 }
+
+.gradient-text{
+    background: linear-gradient(
+        to right,
+        #a855f7,
+        #ec4899,
+        #eab308,
+        #ec4899,
+        #a855f7,
+        #ec4899,
+        #eab308,
+        #a855f7,
+        #ec4899,
+        #eab308,
+        #ec4899,
+        #a855f7,
+        #ec4899,
+        #eab308,
+    );
+    background-clip: text;
+}

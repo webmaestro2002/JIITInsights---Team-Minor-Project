@@ -26,10 +26,12 @@
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.5.2",
     "react-icons": "^4.11.0",
+    "react-parallax-tilt": "^1.7.175",
     "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^6.20.0",
     "react-router-use-history": "^1.0.0",
     "react-tsparticles": "^2.12.2",
+    "react-type-animation": "^3.2.0",
     "styled-components": "^6.1.1",
     "tailwindcss": "^3.3.3",
     "vanilla-lazyload": "^17.8.4"

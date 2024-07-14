@@ -1,6 +1,3 @@
-
-
-import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import { useContext } from "react";
@@ -8,23 +5,12 @@ import { useContext } from "react";
 export default function Header() {
     const { user, isAdmin } = useContext(UserContext);
 
-
     return (
         <div>
-            <header className='flex justify-between'>
-                <Link to={'/'} className='flex items-center gap-1'>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-                    </svg>
-                    <span className='font-bold text-xl'>jiitInsights</span>
-                </Link>
-
-                <div className='flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-300 bg-black'>
-                    <Link to="/" className="flex items-center text-white">Home</Link>
-                    <div className="border-l border-gray-300"></div>
-                    <Link to="/merchandise" className="flex items-center text-white">Merchandise</Link>
-                    <div className="border-l border-gray-300"></div>
-                    <Link to="/contact" className="flex items-center text-white">Contact</Link>
+            <header className="flex justify-between bg-black">
+                {/* logo */}
+                <div className="flex items-center gap-1">
+                    <img src="/images/logo.png" className="w-24 h-auto" alt="" />
                 </div>
                 {/* user widget */}
                 <Link
@@ -32,38 +18,31 @@ export default function Header() {
                     className="flex items-center gap-2 py-2 px-4 text-white text-sm focus:outline-none"
                 >
                     {/* navbar */}
-                    <div className="flex gap-4 py-2 px-4 bg-black">
+                    <div className="flex gap-4 py-2 px-4 bg-black ">
                         <Link
                             to="/"
-                            className="flex items-center text-white text-sm font-normal focus:outline-none"
+                            className="flex items-center bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 via-yellow-500 from-purple-500 to-red-500 text-transparent bg-clip-text text-sm font-normal focus:outline-none "
                         >
                             Home
                         </Link>
                         <Link
                             to="/merchandise"
-                            className="flex items-center text-white text-sm font-normal focus:outline-none"
+                            className="flex items-center bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 via-yellow-500 from-purple-500 to-red-500 text-transparent bg-clip-text text-sm font-normal focus:outline-none"
                         >
                             Merchandise
                         </Link>
                         {isAdmin && user && user.userName === "disha" && (
                             <Link
                                 to="/admin/add"
-                                className="flex items-center text-white text-sm font-normal focus:outline-none"
+                                className="flex items-center bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 via-yellow-500 from-purple-500 to-red-500 text-transparent bg-clip-text text-sm font-normal focus:outline-none"
                             >
                                 Add Admin
                             </Link>
                         )}
                         <Link
                             to="/contact"
-                            className="flex items-center text-white text-sm font-normal focus:outline-none rounded-full"
-                            style={{
-                                backgroundColor: "#800080",
-                                width: "80px",
-                                height: "40px",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                            }}
+                            className="flex items-center bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 via-yellow-500 from-purple-500 to-red-500 text-transparent bg-clip-text text-sm font-normal focus:outline-none rounded-full"
+    
                         >
                             Contact
                         </Link>
@@ -74,7 +53,7 @@ export default function Header() {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="w-6 h-6"
+                        className="w-6 h-6 text-gray-400"
                     >
                         <path
                             strokeLinecap="round"
@@ -82,12 +61,12 @@ export default function Header() {
                             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                         />
                     </svg>
-                    <div className="bg-gray-500 text-white rounded-full border border-gray-500 overflow-hidden">
+                    <div className="bg-gray-500 text-white rounded-full border border-gray-500 overflow-hidden bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 via-yellow-500 from-purple-500 to-red-500 text-transparent bg-clip-text">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
                             fill="currentColor"
-                            className="w-6 h-6 relative top-1"
+                            className="w-6 h-6 relative top-1 "
                         >
                             <path
                                 fillRule="evenodd"
@@ -97,7 +76,7 @@ export default function Header() {
                         </svg>
                     </div>
                     {!!user ? (
-                        <div>
+                        <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text">
                             {user.name}
                             {isAdmin && <span> (Admin: {user.userName})</span>}
                         </div>
@@ -107,7 +86,6 @@ export default function Header() {
                         </div>
                     ) : null}
                 </Link>
-             
             </header>
         </div>
     );

@@ -3,6 +3,9 @@ import React, { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../UserContext";
+import Tilt from 'react-parallax-tilt';
+import '../App.css'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
@@ -65,54 +68,87 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="mt-4 grow flex items-center justify-around">
-      <div className="mb-48">
-        <h1 className="text-2xl text-center mb-4">Login</h1>
-        <form className="max-w-md mx-auto" onSubmit={handleLoginSubmit}>
-          <input
-            type="email"
-            placeholder="College email id"
-            value={email}
-            onChange={(ev) => setEmail(ev.target.value)}
-          />
-          {emailError && <p className="text-red-500">{emailError}</p>}
-          <div className="relative">
+    <div className="App bg-black h-screen w-screen relative overflow-hidden flex justify-center items-center">
+    <div className="h-40-r w-40-r bg-gradient-to-r from-green-400 to-blue-500 rounded-full absolute left-2/3 -top-56 transform rotate-160 animate-pulse"></div>
+    <div className="h-35-r w-35-r bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-full absolute top-96 -left-20 transform rotate-180 animate-pulse"></div>
+    <Tilt>
+    <div className="container h-96 w-96 bg-white bg-opacity-10 rounded-2xl shadow-5xl relative z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm overflow-hidden">
+      <div className="mt-4 grow flex items-center justify-around">
+        <div className="mb-48">
+          <h1 className="text-2xl text-center mb-4">Login</h1>
+          <form className="max-w-md mx-auto h-full flex flex-col justify-evenly items-center" onSubmit={handleLoginSubmit}>
             <input
-              type={showPassword ? "text" : "password"}
-              placeholder="password (min length 8)"
-              value={password}
-              onChange={(ev) => setPassword(ev.target.value)}
+              type="email"
+              placeholder="College email id"
+              className='input-text'
+              value={email}
+              onChange={(ev) => setEmail(ev.target.value)}
             />
-            <span
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-2 top-2 cursor-pointer"
-            >
-              <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
-            </span>
-          </div>
-          {passwordError && <p className="text-red-500">{passwordError}</p>}
-          <button className="primary">Login</button>
-          <div className="text-center py-2 text-gray-500">
-            <Link className="underline text-black" to={"/forgot-password"}>
-              Forgot Password?
-            </Link>
-          </div>
-          <div className="text-center py-2 text-gray-500">
-            <p>Admin login:</p>
-            <Link className="underline text-black" to={"/admin/login"}>
-              Login as Admin
-            </Link>
-          </div>
+            {emailError && <p className="text-red-500">{emailError}</p>}
+            <div className="relative flex">
+              <input
+                type={showPassword ? "text" : "password"}
+                className='input-text'
+                placeholder="password (min length 8)"
+                value={password}
+                onChange={(ev) => setPassword(ev.target.value)}
+              />
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-2 top-2 cursor-pointer text-white"
+              >
+                <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+              </span>
+            </div>
+            {passwordError && <p className="text-red-500">{passwordError}</p>}
+            <button className=" cursor-pointer font-poppins rounded-full px-5 py-1 bg-white bg-opacity-50 hover:bg-white hover:bg-opacity-80 mt-2">Login</button>
+           
+           <div className="flex gap-2">            
+           <div className="text-center py-2 text-gray-500 text-sm ">
+              <Link className="underline text-white" to={"/forgot-password"}>
+                Forgot Password?
+              </Link>
+            </div>
+            <div className="text-center py-2 text-gray-500 text-sm">
+              <Link className="underline text-white" to={"/admin/login"}>
+                Login Admin
+              </Link>
+            </div></div>
 
-          {/* Registration Link */}
-          <div className="text-center py-2 text-gray-500">
-            <p>Don't have an account?</p>
-            <Link className="underline text-black" to={"/register"}>
-              Register here
-            </Link>
-          </div>
-        </form>
+            {/* Registration Link */}
+            <div className="text-center py-2 text-gray-500">
+              <p>Don't have an account?</p>
+              <Link className="underline text-white" to={"/register"}>
+                Register here
+              </Link>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+      </div>
+    </Tilt>
+  </div>
+  
   );
 }
+
+
+
+
+
+
+{
+/*<div className="App bg-gray-900 h-screen w-screen relative overflow-hidden flex justify-center items-center">
+  <div className="h-40-r w-40-r bg-gradient-to-r from-green-400 to-blue-500 rounded-full absolute left-2/3 -top-56 transform rotate-160 animate-pulse"></div>
+  <div className="h-35-r w-35-r bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-full absolute top-96 -left-20 transform rotate-180 animate-pulse"></div>
+  <Tilt>
+    <div className="container h-96 w-96 bg-white bg-opacity-10 rounded-2xl shadow-5xl relative z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm">
+      <form className='h-full flex flex-col justify-evenly items-center'>
+        <div className='text-white font-poppins text-2xl tracking-widest'>Login form</div>
+        <input type="text" placeholder='username' className='input-text'/>
+        <input type="password" placeholder='password' className='input-text'/>
+        <input type="Submit" className='cursor-pointer font-poppins rounded-full px-5 py-1 bg-white bg-opacity-50 hover:bg-white hover:bg-opacity-80 '/>
+      </form>
+    </div>
+  </Tilt>
+</div> */ }

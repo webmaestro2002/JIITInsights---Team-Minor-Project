@@ -3,8 +3,9 @@ import axios from "axios";
 import Chat from "../Component/Chat";
 import Carousel from "../Carousel";
 import Footer from "../Footer";
+import video from '/video1.mp4';
+import { TypeAnimation } from 'react-type-animation';
 import ParticlesBackground from "../Component/ParticlesBackground";
-
 
 export default function IndexPage() {
   const [hosted, setHosted] = useState([]);
@@ -16,10 +17,70 @@ export default function IndexPage() {
   }, []);
   return (
     <div className="p-0 m-0">
-      <div>
-      {/* <ParticlesBackground  /> */}
-        <img src="images/landingimage.png" alt="" />
+      <div className="relative">
+        <video src={video} autoPlay loop muted className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-white text-2xl font-bold">
+   
+         <div className="text-white text-4xl font-bold mb-4">
+  <TypeAnimation
+    sequence={['Welcome to ']}
+    wrapper="span"
+    speed={20}
+
+  />
+  <TypeAnimation
+    sequence={['JIIT Insights...']}
+    wrapper="span"
+    speed={50}
+    className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text"
+  
+  />
+</div>
+
+<div className="text-white text-4xl font-bold mb-4">
+  <TypeAnimation
+    sequence={['Never']}
+    wrapper="span"
+    speed={20}
+    className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text"
+   
+  />
+  <TypeAnimation
+    sequence={[' miss an event']}
+    wrapper="span"
+    speed={50}
+ 
+  />
+</div>
+
+<div className="text-white text-4xl font-bold mb-4">
+  <TypeAnimation
+    sequence={['Get to know everything about ']}
+    wrapper="span"
+    speed={20}
+  
+  />
+  <TypeAnimation
+    sequence={['college']}
+    wrapper="span"
+    speed={50}
+    className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text"
+   
+  />
+</div>
+
+ 
+
+
+
+
+
+          </div>
         </div>
+      </div>
+
       <div>
         <Carousel />
       </div>
@@ -52,4 +113,8 @@ export default function IndexPage() {
     </div>
   )
 }
+
+
+
+
 

@@ -1,25 +1,25 @@
-// import './App.css';
-// import { Route, Routes } from 'react-router-dom';
-// import IndexPage from './pages/IndexPage.jsx';
-// import LoginPage from './pages/LoginPage';
-// import RegisterPage from './pages/RegisterPage';
-// import ProfilePage from './pages/ProfilePage';
-// import HostPage from './pages/HostPage';
-// import Layout from './Layout';
-// import axios from 'axios';
-// import { UserContextProvider } from './UserContext';
-// import HostedFormPage from './pages/HostedFormPage';
-// import HostedPage from './pages/HostedPage';
-// import ParticipatedPage from './pages/ParticipatedPage';
-// import ParticipatePage from './pages/ParticipatePage'; 
-// import SelectedSociety from './pages/selectedSociety';
-// import ListAdmins from './pages/ListAdmins.jsx';
-// import AddAdmin from './pages/AddAdmin.jsx';
-// import LoginAdmin from './pages/LoginAdmin.jsx';
-// import ForgotPasswordPage from './pages/ForgotPasswordPage.jsx';
-// import ResetPasswordPage from './pages/ResetPasswordPage.jsx';
-// import MerchandiseApp from './MerchandiseApp.jsx';
-// import ContactPage from './pages/ContactPage.jsx';
+import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import IndexPage from './pages/IndexPage.jsx';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import ProfilePage from './pages/ProfilePage';
+import HostPage from './pages/HostPage';
+import Layout from './Layout';
+import axios from 'axios';
+import { UserContextProvider } from './UserContext';
+import HostedFormPage from './pages/HostedFormPage';
+import HostedPage from './pages/HostedPage';
+import ParticipatedPage from './pages/ParticipatedPage';
+import ParticipatePage from './pages/ParticipatePage'; 
+import SelectedSociety from './pages/selectedSociety';
+import ListAdmins from './pages/ListAdmins.jsx';
+import AddAdmin from './pages/AddAdmin.jsx';
+import LoginAdmin from './pages/LoginAdmin.jsx';
+import ForgotPasswordPage from './pages/ForgotPasswordPage.jsx';
+import ResetPasswordPage from './pages/ResetPasswordPage.jsx';
+import MerchandiseApp from './MerchandiseApp.jsx';
+import ContactPage from './pages/ContactPage.jsx';
 
 
 

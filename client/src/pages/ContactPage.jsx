@@ -42,7 +42,7 @@ const ContactPage = () => {
               </a>
 
               <div className="contact-info-content">
-                <h4>Instagram</h4>
+                <h4 className='bg-'>Instagram</h4>
                 <p>@jiitinsights</p>
               </div>
             </div>
